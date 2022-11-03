@@ -23,6 +23,39 @@
               ]
             }
           ]
+        },
+        {
+          "name": "somewhere-else",
+          "roles": [
+            {
+              "name": "seethings",
+              "permissions": [
+                {
+                  "uri": "*",
+                  "allow": {
+                    "call": true,
+                    "register": false,
+                    "publish": false,
+                    "subscribe": true
+                  }
+                }
+              ]
+            },
+            {
+              "name": "dothings",
+              "permissions": [
+                {
+                  "uri": "*",
+                  "allow": {
+                    "call": false,
+                    "register": true,
+                    "publish": true,
+                    "subscribe": false
+                  }
+                }
+              ]
+            }
+          ]
         }
       ],
       "transports": [
@@ -40,6 +73,19 @@
                 "anonymous": {
                   "type": "static",
                   "role": "guest"
+                },
+                "ticket": {
+                  "type": "static",
+                  "principals": {
+                    "barry": {
+                      "ticket": "notsosecret",
+                      "role": "seethings"
+                    },
+                    "steve": {
+                      "ticket": "slightlymoresecret",
+                      "role": "dothings"
+                    }
+                  }
                 }
               }
             }
